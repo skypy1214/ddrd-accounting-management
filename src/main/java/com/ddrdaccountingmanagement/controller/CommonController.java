@@ -15,7 +15,14 @@ public class CommonController {
     @RequestMapping("/")
     public List<UserDTO> selectUserList(){
         List<UserDTO> userList = new ArrayList<UserDTO>();
-        userList = userSvc.selectUserList();
+//        userList = userSvc.selectUserList();
+        for(int i = 0; i < userList.size(); i ++){
+            String name = userList.get(i).getUserNm();
+        }
+
+        for(UserDTO vo : userList){
+            String name = vo.getUserNm();
+        }
         return userList;
     }
 }

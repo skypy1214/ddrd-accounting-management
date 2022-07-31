@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <script>
+
+    </script>
+
+    <script>
+        var list = new Array();
+        $(document).ready(function(){
+
+            fetch("./test.json")
+            .then(response => {
+               return response.json();
+            })
+            .then(e => {
+                list = e;
+                console.log( "list", list.userList )
+            });
+
+        });
+        function join(){
+            var obj = new Object();
+            obj.usrId = $("#usrId").val()
+            obj.usrPwd = $("#usrPwd").val()
+            obj.usrNm = $("#usrNm").val()
+            obj.age = $("#age").val()
+            obj.phoneNum = $("#phoneNum").val()
+            console.log(obj)
+            list.push(obj)
+        }
+    </script>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+<h2>회원가입</h2>
+<div>
+    아이디 : <input type="text" id="usrId"/>
+    비밀번호 : <input type="text" id="usrPwd"/>
+    이름 : <input type="text" id="usrNm"/>
+    나이 : <input type="text" id="age"/>
+    전화번호 : <input type="text" id="phoneNum"/>
+    <button type="button" onclick="join()" id="save">저장</button>
+
+</div>
+</body>
+</html>
